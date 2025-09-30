@@ -48,7 +48,7 @@ The following configuration achieved the best test accuracy. It includes several
 
 ### Bonus Analysis: Performance Improvements
 
-[cite_start]To maximize the ViT's performance, several key techniques were implemented[cite: 18]:
+To maximize the ViT's performance, several key techniques were implemented:
 
 * **Speed and Stability**:
     * **Mixed Precision Training**: Using `torch.amp` (`autocast` and `GradScaler`) provided a significant speedup (~1.5-2x) by using `float16` for computations.
