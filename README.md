@@ -1,9 +1,4 @@
-# AIRL
-Of course. Here is the complete, updated `README.md` file reflecting your final Q1 accuracy of **88.37%** and incorporating all the details for both questions.
 
-You can copy and paste this directly into the `README.md` file in your GitHub repository.
-
----
 # AIRL Internship Coding Assignment
 
 This repository contains the solutions for the AI for Robotics Research Lab (AIRL) internship coding assignment submitted on September 30, 2025.
@@ -14,17 +9,17 @@ This repository contains the solutions for the AI for Robotics Research Lab (AIR
 ---
 ## Q1: Vision Transformer on CIFAR-10
 
-[cite_start]This solution implements a Vision Transformer (ViT) from scratch in PyTorch and trains it on the CIFAR-10 dataset to achieve the highest possible test accuracy[cite: 11].
+This solution implements a Vision Transformer (ViT) from scratch in PyTorch and trains it on the CIFAR-10 dataset to achieve the highest possible test accuracy.
 
 ### How to Run in Colab
 
 1.  Open `q1.ipynb` in Google Colab.
 2.  Ensure the runtime is set to a GPU (e.g., `T4 GPU`) by navigating to `Runtime` -> `Change runtime type`.
-3.  Run all cells from top to bottom. The script will download the CIFAR-10 dataset, build the model, and run the training process. [cite_start]The final best accuracy will be printed at the end. [cite: 16]
+3.  Run all cells from top to bottom. The script will download the CIFAR-10 dataset, build the model, and run the training process. The final best accuracy will be printed at the end. [cite: 16]
 
 ### Best Model Configuration
 
-[cite_start]The following configuration achieved the best test accuracy[cite: 16]. It includes several optimization and regularization techniques.
+The following configuration achieved the best test accuracy. It includes several optimization and regularization techniques.
 
 | Parameter | Value | Description |
 | :--- | :--- | :--- |
@@ -49,7 +44,7 @@ This repository contains the solutions for the AI for Robotics Research Lab (AIR
 | :--- | :--- |
 | **Overall Test Accuracy** | **88.37%** |
 
-[cite_start]*(Note: This was the best accuracy achieved during the final run. [cite: 31] The result may vary slightly on different runs due to the stochastic nature of training.)*
+*(Note: This was the best accuracy achieved during the final run.  The result may vary slightly on different runs due to the stochastic nature of training.)*
 
 ### Bonus Analysis: Performance Improvements
 
@@ -69,24 +64,25 @@ This repository contains the solutions for the AI for Robotics Research Lab (AIR
 ---
 ## Q2: Text-Driven Image Segmentation with SAM 2
 
-[cite_start]This solution creates a pipeline that takes a text prompt and an image, and outputs a segmentation mask for the object described in the prompt using SAM 2[cite: 21].
+This solution creates a pipeline that takes a text prompt and an image, and outputs a segmentation mask for the object described in the prompt using SAM 2.
 
 ### Pipeline Overview
 
 The pipeline uses two main models from the `ultralytics` library:
 
-1.  [cite_start]**YOLO-World**: A powerful zero-shot detection model that takes the text prompt (e.g., "a dog," "dog collar") and identifies the corresponding object's location in the image by generating a bounding box[cite: 23].
-2.  [cite_start]**SAM (Segment Anything Model)**: This model takes the bounding box from YOLO-World as a prompt and generates a high-quality, precise segmentation mask for the object within that box[cite: 23].
+1.  **YOLO-World**: A powerful zero-shot detection model that takes the text prompt (e.g., "a dog," "dog collar") and identifies the corresponding object's location in the image by generating a bounding box.
+2.  **SAM (Segment Anything Model)**: This model takes the bounding box from YOLO-World as a prompt and generates a high-quality, precise segmentation mask for the object within that box.
 
 ### How to Run in Colab
 
 1.  Open `q2.ipynb` in Google Colab.
 2.  Ensure the runtime is set to a GPU.
-3.  [cite_start]Run all cells from top to bottom[cite: 24]. The script will install the `ultralytics` library and download the required model weights automatically on the first run.
+3.  Run all cells from top to bottom. The script will install the `ultralytics` library and download the required model weights automatically on the first run.
 4.  You can modify the `TEXT_PROMPT` and `IMAGE_PATH` variables in the final cell to run the pipeline on your own images and prompts.
 
 ### Limitations
 
-* **Fine-Grained Details**: The YOLO-World detector can struggle with prompts for very small, fine-grained, or low-contrast objects (e.g., "dog collar" in the sample image). This is a common limitation of zero-shot models. [cite_start]Lowering the confidence threshold can sometimes help but may also increase false positives[cite: 25].
-* **Text Ambiguity**: The model's performance depends on its ability to interpret the text prompt. [cite_start]Highly abstract or ambiguous prompts may not yield accurate detections[cite: 25].
+* **Fine-Grained Details**: The YOLO-World detector can struggle with prompts for very small, fine-grained, or low-contrast objects (e.g., "dog collar" in the sample image). This is a common limitation of zero-shot models.
+* Lowering the confidence threshold can sometimes help but may also increase false positives.
+* **Text Ambiguity**: The model's performance depends on its ability to interpret the text prompt.Highly abstract or ambiguous prompts may not yield accurate detections.
 * **Single Object Focus**: The current implementation is designed to segment the single most confident detection. It may not perform well on prompts that describe multiple, distinct objects.
